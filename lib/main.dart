@@ -2,6 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:movie_app/utils/text.dart';
+import 'package:movie_app/widget/topRated.dart';
+import 'package:movie_app/widget/tv.dart';
 import 'package:tmdb_api/tmdb_api.dart';
 import 'package:movie_app/widget/trending.dart';
 
@@ -62,13 +64,14 @@ class _HomeState extends State<Home> {
       trendingMovies = trendingresult['results'];
       topratedmovies = topratedresults['results'];
       tv = tvresults['results'];
-      print(trendingMovies);
+      print(tv);
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         title: const textModify(
@@ -79,13 +82,11 @@ class _HomeState extends State<Home> {
       ),
       body: ListView(
         children: [
+          TV(tv: tv),
+          TopRated(toprated: topratedmovies),
           TrendingMovies(trending: trendingMovies),
         ],
       ),
     );
   }
 }
-
-
-// how do i create a bloc in flutter?
-
