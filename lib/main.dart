@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/utils/text.dart';
 import 'package:tmdb_api/tmdb_api.dart';
+import 'package:movie_app/widget/trending.dart';
 
 void main() {
   runApp(const MyApp());
@@ -69,11 +70,17 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.transparent,
         title: const textModify(
           text: 'My Movie App',
           color: Colors.white,
           size: 20,
         ),
+      ),
+      body: ListView(
+        children: [
+          TrendingMovies(trending: trendingMovies),
+        ],
       ),
     );
   }
